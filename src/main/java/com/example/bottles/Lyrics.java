@@ -2,8 +2,17 @@ package com.example.bottles;
 
 public class Lyrics {
     public String getVerse(int bottle) {
-        int bottleminusOne = bottle -1;
-        return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
-                "Take one down and pass it around, "+ bottleminusOne +" bottles of beer on the wall.";
+        int bottleMinusOne = bottle - 1;
+
+        if (bottle == 2) {
+            return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
+                    "Take one down and pass it around, "+ bottleMinusOne +" bottle of beer on the wall.";
+        } else if (bottle == 1) {
+            return bottle + " bottle of beer on the wall, " + bottle + " bottle of beer.\n" +
+                    "Take one down and pass it around, no more bottles of beer on the wall.";
+        } else {
+            return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
+                    "Take one down and pass it around, "+ bottleMinusOne +" bottles of beer on the wall.";
+        }
     }
 }
