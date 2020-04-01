@@ -17,7 +17,7 @@ class LyricsTest {
         String actualVerse = lyrics.getVerse(99);
 
         //then
-        assertThat(actualVerse).isEqualTo(expectedVerse);
+        assertThat(actualVerse).contains(expectedVerse);
     }
 
     @Test
@@ -31,7 +31,7 @@ class LyricsTest {
         String actualVerse = lyrics.getVerse(12);
 
         //then
-        assertThat(actualVerse).isEqualTo(expectedVerse);
+        assertThat(actualVerse).contains(expectedVerse);
     }
 
     @Test
@@ -45,7 +45,7 @@ class LyricsTest {
         String actualVerse = lyrics.getVerse(2);
 
         //then
-        assertThat(actualVerse).isEqualTo(expectedVerse);
+        assertThat(actualVerse).contains(expectedVerse);
     }
 
     @Test
@@ -59,7 +59,7 @@ class LyricsTest {
         String actualVerse = lyrics.getVerse(1);
 
         //then
-        assertThat(actualVerse).isEqualTo(expectedVerse);
+        assertThat(actualVerse).contains(expectedVerse);
     }
 
     @Test
@@ -73,6 +73,6 @@ class LyricsTest {
         String actualVerse = lyrics.getVerse(0);
 
         //then
-        assertThat(actualVerse).isEqualTo(expectedVerse);
+        assertThat(actualVerse).contains(expectedVerse);
     }
 }
