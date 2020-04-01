@@ -9,11 +9,9 @@ public class Lyrics {
     private String buildVerse(int bottle) {
         int bottleMinusOne = bottle - 1;
 
-        if (bottle > 2) {
-            return buildStandardVerse(bottle, bottleMinusOne);
-        } else {
-            return buildSpecificVerse(bottle, bottleMinusOne);
-        }
+        return (bottle > 2) ?
+                buildStandardVerse(bottle, bottleMinusOne) :
+                buildSpecificVerse(bottle, bottleMinusOne);
     }
 
     private String buildStandardVerse(int bottle, int bottleMinusOne) {
