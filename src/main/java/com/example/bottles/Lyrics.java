@@ -1,7 +1,12 @@
 package com.example.bottles;
 
 public class Lyrics {
+
     public String getVerse(int bottle) {
+        return buildVerse(bottle);
+    }
+
+    private String buildVerse(int bottle) {
         int bottleMinusOne = bottle - 1;
 
         if (bottle == 2) {
