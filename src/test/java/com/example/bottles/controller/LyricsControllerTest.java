@@ -57,4 +57,15 @@ public class LyricsControllerTest {
                 .isInstanceOf(Exception.class)
                 .hasMessageContaining("");
     }
+
+    @Test
+    void throwsAnExceptionWhenItsANumberSmallerThan0() {
+        //given
+        LyricsController lyricsController = new LyricsController(lyrics);
+
+        //when //then
+        assertThatThrownBy(() -> lyricsController.getLyric(-1))
+                .isInstanceOf(Exception.class)
+                .hasMessageContaining("");
+    }
 }

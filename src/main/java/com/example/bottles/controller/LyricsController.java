@@ -17,7 +17,7 @@ public class LyricsController {
 
     @GetMapping(value = "{bottleQuantity}")
     public String getLyric(@PathVariable int bottleQuantity) throws Exception {
-        if(bottleQuantity > 99) {
+        if(bottleQuantity > 99 || bottleQuantity < 0) {
             throw new Exception("");
         }
 
