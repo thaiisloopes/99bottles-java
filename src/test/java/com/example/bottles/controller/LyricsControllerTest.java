@@ -1,6 +1,7 @@
 package com.example.bottles.controller;
 
 import com.example.bottles.Lyrics;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -11,11 +12,17 @@ import static org.mockito.Mockito.when;
 
 public class LyricsControllerTest {
 
-    private Lyrics lyrics = mock(Lyrics.class);
+    private Lyrics lyrics;
+    private LyricsController lyricsController;
+
+    @BeforeEach
+    void setUp() {
+        lyrics = mock(Lyrics.class);
+        lyricsController = new LyricsController(lyrics);
+    }
 
     @Test
     void shouldReturnAllRequiredVerses() throws Exception {
-        //given
         String expectedResponse = "6 bottles of beer on the wall, 6 bottles of beer.\n" +
                 "Take one down and pass it around, 5 bottles of beer on the wall.\n" +
                 "\n" +
@@ -38,21 +45,13 @@ public class LyricsControllerTest {
                 "Go to the store and buy some more, 99 bottles of beer on the wall.";
         when(lyrics.getVerse(6)).thenReturn(expectedResponse);
 
-        LyricsController lyricsController = new LyricsController(lyrics);
-
-        //when
         String actualResponse = lyricsController.getLyric(6);
 
-        //then
         assertThat(actualResponse).isEqualTo(expectedResponse);
     }
 
     @Test
     void throwsAnExceptionWhenItsANumberBiggerThan99() {
-        //given
-        LyricsController lyricsController = new LyricsController(lyrics);
-
-        //when //then
         assertThatThrownBy(() -> lyricsController.getLyric(100))
                 .isInstanceOf(Exception.class)
                 .hasMessage("Invalid number of verses. It must be between 0 and 99.");
@@ -60,10 +59,6 @@ public class LyricsControllerTest {
 
     @Test
     void throwsAnExceptionWhenItsANumberSmallerThan0() {
-        //given
-        LyricsController lyricsController = new LyricsController(lyrics);
-
-        //when //then
         assertThatThrownBy(() -> lyricsController.getLyric(-1))
                 .isInstanceOf(Exception.class)
                 .hasMessage("Invalid number of verses. It must be between 0 and 99.");
