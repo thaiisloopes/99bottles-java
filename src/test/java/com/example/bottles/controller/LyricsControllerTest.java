@@ -55,7 +55,7 @@ public class LyricsControllerTest {
         //when //then
         assertThatThrownBy(() -> lyricsController.getLyric(100))
                 .isInstanceOf(Exception.class)
-                .hasMessageContaining("");
+                .hasMessage("Invalid number of verses. It must be between 0 and 99.");
     }
 
     @Test
@@ -66,6 +66,6 @@ public class LyricsControllerTest {
         //when //then
         assertThatThrownBy(() -> lyricsController.getLyric(-1))
                 .isInstanceOf(Exception.class)
-                .hasMessageContaining("");
+                .hasMessage("Invalid number of verses. It must be between 0 and 99.");
     }
 }
