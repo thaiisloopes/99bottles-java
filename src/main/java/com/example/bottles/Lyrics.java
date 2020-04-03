@@ -1,5 +1,8 @@
 package com.example.bottles;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Lyrics {
 
     public String getVerse(int bottle) {

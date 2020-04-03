@@ -2,8 +2,10 @@ package com.example.bottles.controller;
 
 import com.example.bottles.Lyrics;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.client.HttpClientErrorException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -12,7 +14,7 @@ public class LyricsControllerTest {
     private Lyrics lyrics = mock(Lyrics.class);
 
     @Test
-    void shouldReturnAllRequiredVerses() {
+    void shouldReturnAllRequiredVerses() throws Exception {
         //given
         String expectedResponse = "6 bottles of beer on the wall, 6 bottles of beer.\n" +
                 "Take one down and pass it around, 5 bottles of beer on the wall.\n" +
@@ -43,5 +45,16 @@ public class LyricsControllerTest {
 
         //then
         assertThat(actualResponse).isEqualTo(expectedResponse);
+    }
+
+    @Test
+    void throwsAnExceptionWhenItsANumberBiggerThan99() {
+        //given
+        LyricsController lyricsController = new LyricsController(lyrics);
+
+        //when //then
+        assertThatThrownBy(() -> lyricsController.getLyric(100))
+                .isInstanceOf(Exception.class)
+                .hasMessageContaining("");
     }
 }
