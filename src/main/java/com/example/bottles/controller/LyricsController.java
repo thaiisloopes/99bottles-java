@@ -15,12 +15,13 @@ public class LyricsController {
         this.lyrics = lyrics;
     }
 
-    @GetMapping(value = "{bottleQuantity}")
-    public String getLyric(@PathVariable int bottleQuantity) throws Exception {
-        if(bottleQuantity > 99 || bottleQuantity < 0) {
+    @GetMapping(value = "{initialBottleVerse}")
+    public String getLyric(@PathVariable int initialBottleVerse,
+                           @PathVariable int finalBottleVerse) throws Exception {
+        if(initialBottleVerse > 99 || initialBottleVerse < 0) {
             throw new Exception("Invalid number of verses. It must be between 0 and 99.");
         }
 
-        return lyrics.getVerse(bottleQuantity);
+        return lyrics.getVersesFrom(initialBottleVerse, finalBottleVerse);
     }
 }

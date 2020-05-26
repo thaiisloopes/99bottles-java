@@ -3,7 +3,6 @@ package com.example.bottles.controller;
 import com.example.bottles.Lyrics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.web.client.HttpClientErrorException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -43,23 +42,23 @@ public class LyricsControllerTest {
                 "\n" +
                 "No more bottles of beer on the wall, no more bottles of beer.\n" +
                 "Go to the store and buy some more, 99 bottles of beer on the wall.";
-        when(lyrics.getVerse(6)).thenReturn(expectedResponse);
+        when(lyrics.getVersesFrom(6, 0)).thenReturn(expectedResponse);
 
-        String actualResponse = lyricsController.getLyric(6);
+        String actualResponse = lyricsController.getLyric(6, 0);
 
         assertThat(actualResponse).isEqualTo(expectedResponse);
     }
 
     @Test
     void throwsAnExceptionWhenItsANumberBiggerThan99() {
-        assertThatThrownBy(() -> lyricsController.getLyric(100))
+        assertThatThrownBy(() -> lyricsController.getLyric(100, 0))
                 .isInstanceOf(Exception.class)
                 .hasMessage("Invalid number of verses. It must be between 0 and 99.");
     }
 
     @Test
     void throwsAnExceptionWhenItsANumberSmallerThan0() {
-        assertThatThrownBy(() -> lyricsController.getLyric(-1))
+        assertThatThrownBy(() -> lyricsController.getLyric(-1, 0))
                 .isInstanceOf(Exception.class)
                 .hasMessage("Invalid number of verses. It must be between 0 and 99.");
     }
