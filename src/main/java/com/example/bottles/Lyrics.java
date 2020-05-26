@@ -5,18 +5,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class Lyrics {
 
+    public static final int LAST_VERSE_INDEX = 0;
+    public static final int INDEX_OF_FIRST_SPECIFIC_VERSE = 2;
+
     public String getVerse(int bottle) {
-        StringBuffer sb = new StringBuffer();
-        for (int i = bottle; i >= 0; i--) {
-            sb.append(buildVerse(i));
+        StringBuilder builder = new StringBuilder();
+        for (int index = bottle; index >= LAST_VERSE_INDEX; index--) {
+            builder.append(buildVerse(index));
         }
-        return sb.toString();
+        return builder.toString();
     }
 
     private String buildVerse(int bottle) {
         int bottleMinusOne = bottle - 1;
 
-        return (bottle > 2) ?
+        return (bottle > INDEX_OF_FIRST_SPECIFIC_VERSE) ?
                 buildStandardVerse(bottle, bottleMinusOne) :
                 buildSpecificVerse(bottle, bottleMinusOne);
     }
