@@ -17,28 +17,27 @@ public class Lyrics {
     }
 
     private String buildVerse(int bottle) {
-        int bottleMinusOne = bottle - 1;
-
         return (bottle > INDEX_OF_FIRST_SPECIFIC_VERSE) ?
-                buildStandardVerse(bottle, bottleMinusOne) :
-                buildSpecificVerse(bottle, bottleMinusOne);
+                buildStandardVerse(bottle) :
+                buildSpecificVerse(bottle);
     }
 
-    private String buildStandardVerse(int bottle, int bottleMinusOne) {
+    private String buildStandardVerse(int bottle) {
         return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
-                "Take one down and pass it around, "+ bottleMinusOne +" bottles of beer on the wall.\n\n";
+                "Take one down and pass it around, "+ (bottle - 1) +" bottles of beer on the wall.\n\n";
     }
 
-    private String buildSpecificVerse(int bottle, int bottleMinusOne) {
-        if (bottle == 2) {
-            return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
-                    "Take one down and pass it around, "+ bottleMinusOne +" bottle of beer on the wall.\n\n";
-        } else if (bottle == 1) {
-            return bottle + " bottle of beer on the wall, " + bottle + " bottle of beer.\n" +
-                    "Take one down and pass it around, no more bottles of beer on the wall.\n\n";
-        } else {
-            return "No more bottles of beer on the wall, no more bottles of beer.\n" +
-                    "Go to the store and buy some more, 99 bottles of beer on the wall.";
+    private String buildSpecificVerse(int bottle) {
+        switch (bottle) {
+            case 2:
+                return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
+                        "Take one down and pass it around, "+ (bottle - 1) +" bottle of beer on the wall.\n\n";
+            case 1:
+                return bottle + " bottle of beer on the wall, " + bottle + " bottle of beer.\n" +
+                        "Take one down and pass it around, no more bottles of beer on the wall.\n\n";
+            default:
+                return "No more bottles of beer on the wall, no more bottles of beer.\n" +
+                        "Go to the store and buy some more, 99 bottles of beer on the wall.";
         }
     }
 }
