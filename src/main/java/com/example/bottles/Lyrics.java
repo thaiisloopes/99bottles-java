@@ -2,6 +2,8 @@ package com.example.bottles;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class Lyrics {
 
@@ -21,12 +23,14 @@ public class Lyrics {
             case 1:
                 return bottle + " bottle of beer on the wall, " + bottle + " bottle of beer.\n" +
                         "Take one down and pass it around, no more bottles of beer on the wall.\n\n";
-            case 2:
-                return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
-                        "Take one down and pass it around, "+ (bottle - 1) +" bottle of beer on the wall.\n\n";
             default:
-                return bottle+ " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
-                        "Take one down and pass it around, "+ (bottle - 1) +" bottles of beer on the wall.\n\n";
+                return bottle + " bottles of beer on the wall, "+ bottle + " bottles of beer.\n"+
+                        "Take one down and pass it around, " + (bottle - 1) + " " + container(bottle - 1) + " of beer on the wall.\n\n";
         }
     }
+
+    private String container(int numberOfBottles) {
+        return (numberOfBottles == 1) ? "bottle" : "bottles";
+    }
+
 }
