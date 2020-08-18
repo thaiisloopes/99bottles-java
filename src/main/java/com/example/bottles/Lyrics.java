@@ -2,14 +2,12 @@ package com.example.bottles;
 
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class Lyrics {
 
-    public String getVersesFrom(int initialVerse, int finalVerse) {
+    public String getVersesFrom(int initialVerse) {
         StringBuilder builder = new StringBuilder();
-        for (int index = initialVerse; index >= finalVerse; index--) {
+        for (int index = initialVerse; index >= 0; index--) {
             builder.append(buildVerse(index));
         }
         return builder.toString();

@@ -19,7 +19,7 @@ class LyricsTest {
         String expectedVerse = "99 bottles of beer on the wall, 99 bottles of beer.\n" +
                 "Take one down and pass it around, 98 bottles of beer on the wall.";
 
-        String actualVerse = lyrics.getVersesFrom(99, 0);
+        String actualVerse = lyrics.getVersesFrom(99);
 
         assertThat(actualVerse).contains(expectedVerse);
     }
@@ -29,7 +29,7 @@ class LyricsTest {
         String expectedVerse = "12 bottles of beer on the wall, 12 bottles of beer.\n" +
                 "Take one down and pass it around, 11 bottles of beer on the wall.";
 
-        String actualVerse = lyrics.getVersesFrom(12, 0);
+        String actualVerse = lyrics.getVersesFrom(12);
 
         assertThat(actualVerse).contains(expectedVerse);
     }
@@ -39,7 +39,7 @@ class LyricsTest {
         String expectedVerse = "2 bottles of beer on the wall, 2 bottles of beer.\n" +
                 "Take one down and pass it around, 1 bottle of beer on the wall.";
 
-        String actualVerse = lyrics.getVersesFrom(2, 0);
+        String actualVerse = lyrics.getVersesFrom(2);
 
         assertThat(actualVerse).contains(expectedVerse);
     }
@@ -49,7 +49,7 @@ class LyricsTest {
         String expectedVerse = "1 bottle of beer on the wall, 1 bottle of beer.\n" +
                 "Take one down and pass it around, no more bottles of beer on the wall.";
 
-        String actualVerse = lyrics.getVersesFrom(1, 0);
+        String actualVerse = lyrics.getVersesFrom(1);
 
         assertThat(actualVerse).contains(expectedVerse);
     }
@@ -59,7 +59,7 @@ class LyricsTest {
         String expectedVerse = "No more bottles of beer on the wall, no more bottles of beer.\n" +
                 "Go to the store and buy some more, 99 bottles of beer on the wall.";
 
-        String actualVerse = lyrics.getVersesFrom(0, 0);
+        String actualVerse = lyrics.getVersesFrom(0);
 
         assertThat(actualVerse).contains(expectedVerse);
     }
@@ -87,7 +87,7 @@ class LyricsTest {
                 "No more bottles of beer on the wall, no more bottles of beer.\n" +
                 "Go to the store and buy some more, 99 bottles of beer on the wall.";
 
-        String actualVerse = lyrics.getVersesFrom(6, 0);
+        String actualVerse = lyrics.getVersesFrom(6);
 
         assertThat(actualVerse).isEqualTo(expectedVerse);
     }

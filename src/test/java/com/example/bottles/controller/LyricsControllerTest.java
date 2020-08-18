@@ -42,23 +42,23 @@ public class LyricsControllerTest {
                 "\n" +
                 "No more bottles of beer on the wall, no more bottles of beer.\n" +
                 "Go to the store and buy some more, 99 bottles of beer on the wall.";
-        when(lyrics.getVersesFrom(6, 0)).thenReturn(expectedResponse);
+        when(lyrics.getVersesFrom(6)).thenReturn(expectedResponse);
 
-        String actualResponse = lyricsController.getLyric(6, 0);
+        String actualResponse = lyricsController.getLyric(6);
 
         assertThat(actualResponse).isEqualTo(expectedResponse);
     }
 
     @Test
     void throwsAnExceptionWhenItsANumberBiggerThan99() {
-        assertThatThrownBy(() -> lyricsController.getLyric(100, 0))
+        assertThatThrownBy(() -> lyricsController.getLyric(100))
                 .isInstanceOf(Exception.class)
                 .hasMessage("Invalid number of verses. It must be between 0 and 99.");
     }
 
     @Test
     void throwsAnExceptionWhenItsANumberSmallerThan0() {
-        assertThatThrownBy(() -> lyricsController.getLyric(-1, 0))
+        assertThatThrownBy(() -> lyricsController.getLyric(-1))
                 .isInstanceOf(Exception.class)
                 .hasMessage("Invalid number of verses. It must be between 0 and 99.");
     }
