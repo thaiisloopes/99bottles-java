@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Lyrics {
 
-    public String getVersesFrom(int initialVerse) {
+    public String getVersesFrom(int bottles) {
         StringBuilder builder = new StringBuilder();
-        for (int index = initialVerse; index >= 0; index--) {
+        for (int index = bottles; index >= 0; index--) {
             builder.append(buildVerse(index));
         }
         return builder.toString();
